@@ -5,6 +5,7 @@ import { Size } from "../types";
 interface Props {
   children: React.ReactNode;
   size?: Size | number;
+  isPressed?: boolean;
 }
 
 const StyledKey = styled.button<{ $width?: number; $height?: number }>`
@@ -28,9 +29,13 @@ const StyledKey = styled.button<{ $width?: number; $height?: number }>`
   &:active {
     box-shadow: 5px 5px 20px 0px rgba(255, 192, 203, 0.6);
   }
+
+  &.active {
+    box-shadow: 5px 5px 20px 0px rgba(255, 192, 203, 0.6);
+  }
 `;
 
-export default function Key({ children, size = 75 }: Props) {
+export default function Key({ children, size = 75, isPressed = false }: Props) {
   const keySize = () => {
     if (typeof size === "number") {
       return {
@@ -41,10 +46,12 @@ export default function Key({ children, size = 75 }: Props) {
     return size;
   };
 
-  console.log(keySize(), size);
-
   return (
-    <StyledKey $width={keySize()?.width} $height={keySize()?.height}>
+    <StyledKey
+      $width={keySize()?.width}
+      $height={keySize()?.height}
+      className={isPressed ? "active" : ""}
+    >
       {children}
     </StyledKey>
   );

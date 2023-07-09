@@ -3,9 +3,10 @@ export interface Size {
   height: number;
 }
 
-export interface KeyboardKeyOpts {
+export interface KeyboardKey {
+  id: string;
   size?: Size;
   text: string;
+  subText?: string;
+  isPressed?: boolean;
 }
-
-export type KeyboardKey = KeyboardKeyOpts | string;
