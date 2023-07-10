@@ -6,6 +6,7 @@ interface Props {
   children: React.ReactNode;
   size?: Size | number;
   isPressed?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const StyledKey = styled.button<{ $width?: number; $height?: number }>`
@@ -35,7 +36,12 @@ const StyledKey = styled.button<{ $width?: number; $height?: number }>`
   }
 `;
 
-export default function Key({ children, size = 75, isPressed = false }: Props) {
+export default function Key({
+  children,
+  size = 75,
+  isPressed = false,
+  onClick,
+}: Props) {
   const keySize = () => {
     if (typeof size === "number") {
       return {
@@ -51,6 +57,7 @@ export default function Key({ children, size = 75, isPressed = false }: Props) {
       $width={keySize()?.width}
       $height={keySize()?.height}
       className={isPressed ? "active" : ""}
+      onClick={onClick}
     >
       {children}
     </StyledKey>

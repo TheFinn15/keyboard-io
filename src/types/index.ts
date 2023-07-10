@@ -5,8 +5,9 @@ export interface Size {
 
 export interface KeyboardKey {
   id: string;
-  size?: Size;
   text: string;
+  keyName: string;
+  size?: Size;
   subText?: string;
   isPressed?: boolean;
 }
