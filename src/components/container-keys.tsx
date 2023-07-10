@@ -15,6 +15,7 @@ const Row = styled.div`
 // TODO: need to add more styles for beautiful view
 const Container = styled.div`
   outline: none;
+  min-height: 100vh;
 `;
 
 export interface State {
