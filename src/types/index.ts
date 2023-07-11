@@ -11,3 +11,8 @@ export interface KeyboardKey {
   subText?: string;
   isPressed?: boolean;
 }
+
+export interface CheckboxItem {
+  name: string;
+  checked?: boolean;
+}

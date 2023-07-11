@@ -5,8 +5,7 @@ export const config: Configuration = {
   // TODO: bug with alias to file paths|cant to use @/ or @components/
   resolve: {
     alias: {
-      "@components": path.join(path.resolve(__dirname, "/src/components")),
-      "@": path.join(path.resolve(__dirname, "/src"))
+      "@": path.join(path.resolve(__dirname, "/src")),
     },
   },
   module: {
