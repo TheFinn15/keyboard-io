@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Node version
-        if: ${{ test -n $(which node) }}
+        if: contains(output, 'node')
         shell: bash
         run: which node && node -v
 #      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
