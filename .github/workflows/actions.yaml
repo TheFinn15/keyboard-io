@@ -4,9 +4,10 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Node version
-        run: which node && node -v
+      - name: SSH info
+        run: cd ~/.ssh && ls
       - name: SSH
+        shell: bash
         run: ssh root@softrize.com
 #      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 #      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
