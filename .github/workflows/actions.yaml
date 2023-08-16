@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: SSH info
-        run: cd ~/.ssh && ls
+        run: cd ~/usr && ls
       - name: SSH
         shell: bash
         run: ssh root@softrize.com
