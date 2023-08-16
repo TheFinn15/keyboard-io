@@ -5,9 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: SSH info
-        run: ls 
+
+      - name: Create ssh dir
+        run: mkdir -p ~/.ssh
+      - name: Copy ssh public key 
+        run: echo "${{env.SSH_PUB}}" > ~/.ssh/id_rsa.pub
+      - name: Change mode
+        run: chmod 600 ~/.ssh/id_rsa.pub
       - name: SSH
         shell: bash
         run: ssh -tt root@softrize.com
