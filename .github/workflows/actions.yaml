@@ -6,17 +6,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Create ssh dir
-        run: mkdir -p ~/.ssh
-      - name: Copy ssh public key 
-        run: echo "${{env.SSH_PUB}}" > ~/.ssh/id_rsa.pub
-      - name: Change mode
-        run: chmod 600 ~/.ssh/id_rsa.pub
-      - name: SSH
-        shell: bash
-        run: ssh -tt -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@softrize.com
-#      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-#      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-#      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-#      - name: Check out repository code
-#        uses: actions/checkout@v3
+      - name: Login in Docker
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+#      - name: Extract metadata for Docker
+#        id: meta
+#        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+#        with:
+#         images:
